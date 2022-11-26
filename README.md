@@ -1,3 +1,8 @@
 Comunidade WEB de Postagens feita com Python usando a Framework Flask<br>
-| aguarde a imagem carregar pra você visualizar o website<br>
-![alt text]("project/Sessão de Postagens.PNG")
+
+
+## Funcionalidades
+
+- Autenticação do Usuario(Login/Criar Conta)
+- Criar/Editar/Excluir Posts
+- Visualizar/Editar Perfil(Username, Email, Foto de Perfil)
