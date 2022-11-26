@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- popup-wraper -->
+    <div class="hide" id="popup-wraper">
+        <div class="popup-delete-post">
+            
+            <form action="" method="POST" class="flex-center flex-column">
+                {{ form_confirmar_delete_post.csrf_token }}
+                <legend class="mb-2">digite <span>"deletar"</span> pra confirmar a exclusão do post</legend>
+                <fieldset>
+                    <div class="form-group">
+                        {% if form_confirmar_delete_post.deleteField.errors %}
+                            {% for erro in form_confirmar_delete_post.deleteField.errors %}
+                                <div class="form-error">
+                                    <i class="fa-solid fa-triangle-exclamation"></i> {{ erro }}
+                                    {{ form_confirmar_delete_post.deleteField }}
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            {{ form_confirmar_delete_post.deleteField }}
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <div class="flex-center flex-wrap">
+                    {{ form_confirmar_delete_post.submitField }}
+                    <a href="">Cancelar</a>
+                </div>
+                
+            </form>
+        </div>
+
+    </div>
+
+    <div class="container-xl flex-center flex-column">
+        <div class="card-post relative">
+            {% if current_user.email == post.autor.email %}
+                <div class="flex-center div-position-absolute" id="links-editar-and-excluir-post">
+                    <a href="" class="link-editar-post mr-1" id="link-editar-post"><i class="fa-solid fa-pen-to-square mr-1"></i>Editar Post</a>
+                    <a href="" class="link-excluir-post" id="link-excluir-post"><i class="fa-solid fa-trash mr-1"></i>Excluir Post</a>
+                </div>
+            {% endif %}
+            <div class="flex-center flex-column">
+                <a href="{{ url_for('exibir_perfil', username=post.autor.username) }}">
+                    <div class="card-photo-profile">
+                        <img src="{{ url_for('static', filename='img/fotos_de_perfil/{}'.format(post.autor.foto_de_perfil)) }}" alt="">
+                    </div>
+                    <p class="flex-center" style="width: 100%;">Autor: {{ post.autor.username }}</p>
+                    <div class="flex-center flex-wrap">
+                        {% for curso in post.autor.cursos.split(';') %}
+                            <div class="card-small-icon-with-curso">
+                                <i class="fa-solid fa-chalkboard-user mr-1"></i>{{ curso }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </a>
+            </div>
+            <div class="card-content">
+                <a href="{{ url_for('exibir_post', post_id=post.id) }}">
+                    {% if current_user.is_authenticated and post.autor.email == current_user.email %}
+                        <h3 class="pseudo-element-h3 mb-1">{{ post.titulo }}</h3>
+                    {% else %}
+                        <h3 class="pseudo-element-h3 mb-1">{{ post.titulo }}</h3>
+                    {% endif %}
+                    <h4>{{ post.corpo }}</h4>
+                    <p>Data de Criação: {{ post.data_de_criacao.strftime('%d/%m/%Y %H:%M:%S') }}</p>
+                </a>
+            </div>
+        </div>
+        {% if post.autor.email == current_user.email %}
+            <div id="form-editar-post" class="hide">
+                <form method="POST" action="" class="form-login" enctype="multipart/form-data">
+                    {{ form_criar_post.csrf_token }}
+                    <legend><i class="fa-solid fa-pen-to-square mr-1"></i>Editar Post</legend>
+                    <fieldset>
+                        <div class="form-group">
+                            {{ form_criar_post.titulo.label }}
+                            {% if form_criar_post.titulo.errors %}
+                                {% for erro in form_criar_post.titulo.errors %}
+                                    <div class="form-error">
+                                        <i class="fa-solid fa-triangle-exclamation"></i> {{ erro }}
+                                        {{ form_criar_post.titulo }}
+                                    </div>
+                                
+                                {% endfor %}
+                            {% else %}
+                                {{ form_criar_post.titulo }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form_criar_post.corpo.label }}
+                            
+                            {% if form_criar_post.corpo.errors %}
+                                {% for erro in form_criar_post.corpo.errors %}
+                                    <div class="form-error">
+                                        <i class="fa-solid fa-triangle-exclamation"></i> {{ erro }}
+                                        {{ form_criar_post.corpo }}
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                {{ form_criar_post.corpo }}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    <div class="submit-and-link-editar-post flex-center">
+                        {{ form_criar_post.submit_criar_post }}
+                        <a href="" id="link-cancelar-edicao">Cancelar Edição</a>
+                    </div>
+                </form>
+            </div>
+        {% else %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+

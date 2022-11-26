@@ -1,0 +1,124 @@
+.form-login{
+    // DISPLAY
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    // TRANSITION
+    transition: .7s ease;
+    
+    // WIDTH
+    width: 500px;
+   
+    // BOX SHADOW
+    box-shadow: RGBA(50, 50, 93, 0.25) 0px 50px 100px -20px, RGBA(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+    // BACKGROUND
+    background-color: $white-light;
+    border-radius: 15px;
+
+
+    // PADDING
+    padding: 48px 24px;
+
+    @include responsive(s){
+        width: 100%;
+        padding: 24px 16px;
+
+        
+    } 
+}
+
+
+.form-login legend{
+    @include typeface-1(h4, desktop);
+    @include responsive(s){
+        @include typeface-1(h4, mobile);
+    }
+    margin-bottom: 30px;
+
+    position: relative;
+    transition: .7s ease;
+    &::after{
+        content: '';
+        position: absolute;
+
+        top: 92%;
+        left: 0;
+
+
+        width: 0%;
+        height: 4px;
+        border-radius: 5px;
+        transition: .7s ease;
+
+        background-color: $black-normal;
+    }
+    &:hover{
+        &::after{
+            
+        }
+        transform: scale(1.02);
+    }
+}
+.form-login fieldset{
+    border: none;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+}
+.form-group label{
+    @include typeface-2(p2, desktop);
+    @include responsive(s){
+        @include typeface-2(p2, mobile);
+    }
+}
+.form-group input{
+    // BORDER
+    border-style:none;
+    outline: none;
+    border-bottom: 1px solid #ccc;
+
+    width: 100%;
+    
+    font-size: 20px;
+    font-weight: 100;
+    padding: 8px 4px;
+
+    
+
+}
+.form-group input:focus{
+    border: none;
+    outline: none;
+    border-bottom: 4px solid #ccc;
+}
+.form-group input:not(:placeholder-shown){
+    border-radius: none;
+}
+
+
+
+// FORM ERRORS
+.form-error{
+    color: #f22c28;
+}
+.form-error input{
+    border-bottom: 2px solid #f22c28;
+    background-color: #fedb9b;
+    color: #cb8100;
+}
+
+
+
+
+
+
+

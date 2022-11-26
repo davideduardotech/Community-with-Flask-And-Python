@@ -1,0 +1,78 @@
+.card-profile{
+    // DISPLAY
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // PADDING
+    padding: 24px 16px;
+
+   
+
+    border: 2px solid #ccc;
+    border-radius: 16px;
+}
+
+
+.photo-profile{
+    width: 200px;
+    height: 200px;
+
+    
+    border-radius: 10px;
+
+    margin-right: 15px;
+}
+
+.information-profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+}
+
+
+.information-profile-name{
+    @include typeface-1(h4, desktop);
+    @include responsive(s){
+        @include typeface-1(h4, mobile);
+    }
+}
+
+.information-profile-cursos-and-posts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+   
+}
+.information-profile-cursos-and-posts div p span{
+    background-color: $black-normal;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: $white-light;
+}
+.information-profile-email{
+    @include typeface-1(h6, desktop);
+    font-weight: 100;
+    @include responsive(s){
+        @include typeface-1(h6, mobile);
+    }
+}
+
+
+
+.button-cursos{
+    padding: 5px 15px;
+    background-color: $black-normal;
+    color: $white-light;
+    border-radius: 5px;
+    margin: 5px;
+    &:hover{
+        transform: scale(1.02);
+    }
+}
+
+

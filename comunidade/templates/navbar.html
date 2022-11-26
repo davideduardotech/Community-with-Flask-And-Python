@@ -1,0 +1,63 @@
+<!-- NAVBAR -->
+<header id="navbar">
+    <!-- NAVBAR MOBILE -->
+    <nav class="navbar-mobile">
+        <div class="bx" id="bx"></div>
+        <a href="">
+            <div class="logo">
+                <i class="fa-solid fa-rocket"></i><span>Comunidade</span>
+            </div>
+        </a>
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('criar_post') }}"  class="btn-3d-black"><i class="fa-solid fa-plus"></i> Criar Post</a>
+        {% else %}
+            <a href="{{ url_for('login') }}"  class="btn-3d-black"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+        {% endif %}
+    </nav>
+
+    <!-- NAVBAR DESKTOP -->
+    <nav class="navbar-desktop">
+        <div class="navbar-desktop-item-1">
+            <a href="{{ url_for('homepage') }}" >
+                <div class="logo">
+                    <i class="fa-solid fa-rocket mr-1"></i><span>Comunidade</span>
+                </div>
+            </a>
+            <ul class="menu-desktop">
+                <li class="menu-item">
+                    <a href="{{ url_for('homepage') }}" class="nav-link-desktop">Pagina Inicial</a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ url_for('usuarios') }}" class="nav-link-desktop">Usuarios
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="navbar-desktop-item-2">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('criar_post') }}" class="btn-3d-black mr-1"><i class="fa-solid fa-plus"></i> Criar Post</a>
+                <a href="{{ url_for('perfil') }}" class="btn-3d-black mr-1"><i class="fa-solid fa-user"></i> Meu Perfil</a>
+                <a href="{{ url_for('sair') }}" class="btn-3d-black"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn-3d-black mr-1">Criar Conta</a>
+                <a href="{{ url_for('login') }}" class="btn-3d-black"><i class="fa-solid fa-right-to-bracket mr-1"></i>Entrar</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- MENU MOBILE -->
+    <nav class="menu-mobile" id="menu-mobile">
+        <ul class="nav-list-mobile">
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('criar_post') }}" class="nav-link-mobile">Criar Post</a></li>
+                <li><a href="{{ url_for('perfil') }}" class="nav-link-mobile">Meu Perfil</a></li>
+                <li><a href="{{ url_for('sair') }}" class="nav-link-mobile">Sair</a></li>
+
+            {% else %}
+                <li><a href="{{ url_for('login') }}" class="nav-link-mobile">Login</a></li>
+                <li><a href="{{ url_for('login') }}" class="nav-link-mobile">Criar Conta</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>

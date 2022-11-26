@@ -1,0 +1,56 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}{% endblock %}
+    {% block links %}{% endblock %}
+    <!-- CSS -->
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&family=Sora:wght@300;400;500;600&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,300&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    {% block scripts %}{% endblock %}
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+
+</head>
+<body>
+    {% include "navbar.html" %}
+
+    {% with mensagens = get_flashed_messages(with_categories=True) %}
+        {% if mensagens %}
+            {% for categoria, mensagem in mensagens %}
+                <div id="alert" class="alert {{ categoria }}">
+                    {% if categoria == "alert-success" %}
+                        <i class="fa-solid fa-circle-check"></i>
+                    {% elif categoria == "alert-info" %}
+                        <i class="fa-solid fa-circle-info"></i>
+                    {% elif categoria == "alert-warning" %}
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    {% else %}
+                        <!-- <i class="fa-solid fa-skull-crossbones"></i> -->
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    {% endif %}
+                    <span>{{ mensagem }}</span>
+                    <div>
+                        <i class="fa-solid fa-xmark" id="alert-xmark"></i>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+   
+
+    {% block content %}
+    {% endblock %}
+    
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+.video-yt-iframe{
+    background-color: #fe0000;
+
+    background-color: $white-light;
+    background-color: #2c2e45;
+
+    
+    padding-left: 25px;
+    padding-right: 25px;
+    
+
+    border-radius: 0px 10px 10px 10px;
+    margin-left: 15px;
+
+    width: 40%;
+    height: 500px;
+
+    
+
+    @include responsive(s){
+        width: 90%;
+
+        margin-left: 0px;
+        margin-bottom: 45px;
+    }
+
+    
+    box-shadow: 4px 4px 20px rgba(51, 53, 77);
+
+    // border-top: 3px solid #000;
+    // border-left: 3px solid #000;
+    // border-right: 3px solid #000;
+    // border-bottom: 3px solid #000;
+
+    // position: relative;
+    // &::after{
+    //    content: "";
+    //    display: block;
+    //    position: absolute;
+    //    top: calc(100% + 2px);
+    //    left: calc(0% - 2px);
+    //    width: calc(100% + (2 * 2px));
+    //    border-top: 8px solid #000;
+    //    border-left: 16px solid rgba(0,0,0,0);
+    //    border-right: 16px solid rgba(0,0,0,0);
+    //    height: 0;
+    //    -webkit-box-sizing: border-box;
+    //    box-sizing: border-box;
+    //  
+    //  }
+    
+}
+
+.video-yt-iframe:hover{
+    .video-yt-iframe h4 span{
+        font-size: 45px;
+    }
+}
+
+
+.video-yt-iframe h4{
+    display: inline-block;
+    color: #fff;
+    
+    
+    
+}
+.video-yt-iframe h4 span{
+    color:#4ac36c;
+    background-color: transparent;
+     text-shadow: 4px 4px 20px rgba(74, 195, 108, 1);
+    font-size: 30px;
+
+    background: linear-gradient(
+    to right, 
+    hsl(98 100% 62%), 
+    hsl(204 100% 59%)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+   
+
+    
+}
+
+.video-yt-iframe i{
+    font-size: 35px;
+    color: #1f2756;
+    color: #fb0303;
+   
+   
+
+}
+.video-yt-iframe iframe{
+    border-radius: 10px;
+    width: 90%;
+    @include responsive(s){
+        width: 90%;
+    }
+
+    box-shadow: 0px 17px 17px rgba(204, 204, 204, 0.04),
+    0px 5.125px 5.125px rgba(204, 204, 204, 0.0260636),
+    0px 2.12866px 2.12866px rgba(204, 204, 204, 0.02),
+    0px 0.769896px 0.769896px rgba(204, 204, 204, 0.0139364);
+
+    &:hover{
+        opacity: 0.9;
+    }
+}

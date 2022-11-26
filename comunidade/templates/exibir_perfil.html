@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container-xl flex-center flex-column">
+        <div>
+            <h1>Perfil do Autor</h1>
+        </div>
+        <div class="card-profile mt-3">
+            <div class="photo-profile">
+                <img src="{{ url_for('static', filename='img/fotos_de_perfil/{}'.format(usuario.foto_de_perfil)) }}" alt="">
+            </div>
+            <div class="information-profile">
+                <div class="information-profile-name-and-email">
+                    <div class="information-profile-name text-linear-gradient">{{ usuario.username }}</div>
+                    <div class="information-profile-email">{{ usuario.email }}</div>
+                </div>
+                <div class="information-profile-cursos-and-posts mt-2 mb-2">
+                    <div class="information-profile-cursos flex-center">
+                        {% if 'Não' in usuario.cursos %}
+                            <p><span>0</span> Cursos Adquiridos</p>
+                        {% else %}
+                            <p><span>{{ usuario.cursos.count(';')+1 }}</span> Cursos Adquiridos</p>
+                        {% endif %}
+                    </div>
+                    <div class="information-profile-posts mt-2">
+                        <p><span>{{ usuario.posts|count }}</span> Posts Feitos</p>
+                    </div>
+                </div>
+                {% if usuario.email == current_user.email %}
+                    <div class="information-profile-button">
+                        <a href="{{ url_for('editar_perfil') }}"><i class="fa-solid fa-pen-to-square"></i> Editar Perfil</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="card-profile flex-column mt-3">
+            <div class="information-profile-email">Seus Cursos</div>
+            <div class="flex-center flex-wrap">
+                {% for curso in usuario.cursos.split(';') %}
+                    {% if curso != 'Não Informado' %}
+                        <div class="button-cursos">
+                            <i class="fa-solid fa-chalkboard-user mr-1"></i>{{ curso }}
+                        </div>
+                    {% else %}
+                        <div class="button-cursos">
+                            {{ curso }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

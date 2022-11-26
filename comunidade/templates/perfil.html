@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-xl flex-center flex-column">
+        <div>
+            <h1>{% block titulo %}Meu Perfil{% endblock %}</h1>
+        </div>
+        <div class="card-profile mt-3">
+            <div class="photo-profile">
+                <img src="{{ foto_de_perfil }}" alt="">
+            </div>
+            <div class="information-profile">
+                <div class="information-profile-name-and-email">
+                    <div class="information-profile-name text-linear-gradient">{{ current_user.username }}</div>
+                    <div class="information-profile-email">{{ current_user.email }}</div>
+                </div>
+                <div class="information-profile-cursos-and-posts mt-2 mb-2">
+                    <div class="information-profile-cursos flex-center">
+                        <p><span>{% block numero_de_cursos %}{{ numero_de_cursos }}{% endblock %}</span> Cursos Adquiridos</p>
+                    </div>
+                    <div class="information-profile-posts mt-2">
+                        <p><span>{% block numero_de_posts %}{{ numero_de_posts }}{% endblock %}</span> Posts Feitos</p>
+                    </div>
+                </div>
+                <div class="information-profile-button">
+                    {% block botaoeditarperfil %}<a href="{{ url_for('editar_perfil') }}"><i class="fa-solid fa-pen-to-square"></i> Editar Perfil</a>{% endblock %}
+                </div>
+            </div>
+        </div>
+        <div class="card-profile flex-column mt-3">
+            <div class="information-profile-email">Seus Cursos</div>
+            <div class="flex-center flex-wrap">
+                {% for curso in current_user.cursos.split(';') %}
+                    {% if curso != 'Não Informado' %}
+                        <div class="button-cursos">
+                            <i class="fa-solid fa-chalkboard-user mr-1"></i>{{ curso }}
+                        </div>
+                    {% else %}
+                        <div class="button-cursos">
+                            {{ curso }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% block form %}
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,140 @@
+.vsl{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+   
+
+    
+}
+.vsl-container{
+    // background-color: red;
+    position: relative;
+    z-index: 1;
+    &::after{
+        content: '';
+        position: absolute;
+        z-index: -1;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        // BACKGROUND VIDEO PLAY POPUP
+        background: linear-gradient(135deg, #5335cf 0%, #de005e 25%, #f66e48 50%, #de005e 75%, #5335cf 100%);
+       background: #2c2e45;
+        clip-path: polygon(66% 0, 100% 0%, 100% 100%, 48% 100%);
+
+        @include responsive(s){
+            display: none;
+        }
+
+
+    }
+}
+.vsl-content-text{
+    display: flex;
+    flex-direction: column;
+    
+  
+    @include responsive(s){
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        width: 100%;
+        height: 100%;
+    
+
+        
+    }
+    
+}
+
+.vsl-content-text h1{
+    @include typeface-1(h3, desktop);
+    padding-right: 30px;
+
+    
+    @include responsive(s){
+        @include typeface-1(h3, mobile);
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+
+}
+.vsl-content-text p{
+    @include responsive(s){
+        padding-bottom: 30px;
+       
+    }
+}
+.vsl iframe{
+
+    
+    -webkit-box-shadow: 0px 0px 21px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 21px -3px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 21px -3px rgba(0,0,0,0.75);
+
+    border: 5px solid #2c2e45;
+
+    border-radius: 10px;
+
+    &:hover{
+        transform: scale(1.02);
+    }
+    
+
+    @include responsive(s){
+        width: 90%;
+        height: 230px;
+        margin-bottom: 50px;
+    }
+}
+
+
+// SESSION CONHECER ROBÔ
+.div-conhecer-robo-video{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    
+}
+.div-conhecer-robo-video iframe{
+    width: 290px;
+    height: 500px;
+    
+
+    border-radius: 10px;
+
+    -webkit-box-shadow: 0px 0px 21px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 21px -3px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 21px -3px rgba(0,0,0,0.75);
+
+    border: 5px solid #2c2e45;
+
+    border-radius: 10px;
+
+    &:hover{
+        transform: scale(1.02);
+    }
+
+
+
+
+}
+
+
+
+
+
+ 
+

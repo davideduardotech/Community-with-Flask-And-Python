@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-xl flex-column">
+        <div class="flex-center">
+            <h1>Usuarios</h1>
+        </div>
+        <div class="flex-center flex-wrap">
+            {% for usuario in lista_de_usuario %}
+                <a href="{{ url_for('exibir_perfil', username=usuario.username) }}" class="hover-with-transform-scale">
+                    <div class="card-profile mt-3 mr-1">
+                        <div class="photo-profile">
+                            <img src="{{ url_for('static', filename='img/fotos_de_perfil/{}'.format(usuario.foto_de_perfil)) }}" alt="">
+                        </div>
+                        <div class="information-profile">
+                            <div class="information-profile-name-and-email">
+                                <div class="information-profile-name text-linear-gradient">{{ usuario.username }}</div>
+                                <div class="information-profile-email">{{ usuario.email }}</div>
+                            </div>
+                            <div class="information-profile-cursos-and-posts mt-2 mb-2">
+                                <div class="information-profile-cursos flex-center">
+                                    {% if 'Não' in usuario.cursos %}
+                                        <p><span>0</span> Cursos Adquiridos</p>
+                                    {% else %}
+                                        <p><span>{{ usuario.cursos.count(';')+1 }}</span> Cursos Adquiridos</p>
+                                    {% endif %}
+                                </div>
+                                <div class="information-profile-posts mt-2">
+                                    <p><span>{{ usuario.posts|length }}</span> Posts Feitos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

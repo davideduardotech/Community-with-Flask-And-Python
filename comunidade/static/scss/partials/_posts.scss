@@ -1,0 +1,322 @@
+// POSTS
+.card-post{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 24px 16px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+
+    margin: 10px;
+}
+
+.card-post div a{
+    &:hover{
+        transform: scale(1.02);
+    }
+}
+.card-photo-profile{
+
+    // DISPLAY
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-right: 1px solid #ccc;
+
+    padding-right: 10px;
+    margin-right: 10px;
+
+}
+.card-photo-profile img{
+    // WIDTH
+    width: 200px;
+    height: 200px;
+    @include responsive(s){
+        width: 150px;
+        height: 150px;
+    }
+}
+
+.card-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    // TRANSITION
+    transition: .4s ease;
+
+    &:hover{
+        transform: scale(1.02);
+    }
+}
+.card-content h3{
+    @include typeface-1(h4, desktop);
+    @include responsive(s){
+        @include typeface-1(h4, mobile);
+    }
+}
+.card-content h4{
+    @include typeface-1(h6, desktop);
+    font-weight: 100;
+    @include responsive(s){
+        @include typeface-1(h6, mobile);
+    }
+}
+
+// BUTTON EDITAR/EXCLUIR POST
+.div-position-absolute{
+    position: absolute;
+    top: 15px;
+    left: 70%;
+
+
+    @include responsive(s){
+        top: 105%;
+        left: 25%;
+    }
+}
+.link-editar-post{
+    display: inline-block;
+
+    border: 1px solid $black-normal;
+    border-radius: 5px;
+    width: 130px;
+
+    padding: 10px;
+    @include responsive(s){
+        padding: 5px;
+    }
+
+    &:hover{
+        background-color: $black-normal;
+        color: $white-light;
+    }
+}
+.link-excluir-post{
+    display: inline-block;
+    color: #fe0000;
+    border: 1px solid #fe0000;
+    border-radius: 5px;
+    width: 130px;
+
+    padding: 10px;
+    @include responsive(s){
+        padding: 5px;
+    }
+
+    &:hover{
+        background-color: #fe0000;
+        color: $white-light;
+    }
+}
+
+// BUTTON EDITAR CONCLUIR/EDITAR
+.submit-and-link-editar-post input{
+    // DISPLAY
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // FONT
+    @include typeface-2(p2, desktop);
+
+    // PADDING AND BACKGROUND
+    padding: 10px;
+    background-color: #48a74d;
+
+    // BORDER AND COLOR
+    border: 1px solid #48a74d;
+    color: $white-light;
+    border-radius: 5px;
+
+    transition: .4s ease;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #48a74d;
+        color: $white-light;
+    }
+}
+.submit-and-link-editar-post a{
+    // DISPLAY
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px;
+    background-color: transparent;
+
+    border: 1px solid #fe0001;
+    color: #fe0001;
+    border-radius: 5px;
+
+    transform: .4s ease;
+    
+    &:hover{
+        background-color: #fe0001;
+        color: $white-light;
+    }
+}
+
+// PSEUDO ELEMENT
+.pseudo-element-h3{
+    // BACKGROUND GRADIENT
+    background: linear-gradient(135deg, #5335cf 0%, #de005e 25%, #f66e48 50%, #de005e 75%, #5335cf 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+
+    position: relative;
+    
+}
+
+// CURSOS
+.card-small-icon-with-curso{
+    // DISPLAY
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // PADDING AND MARGIN
+    padding: 5px;
+    margin: 5px;
+
+    //BACKGROUND AND COLOR
+    background-color: $black-normal;
+    color: $white-light;
+    border-radius: 5px;
+
+    // FONT
+    font-size: 15px;
+    @include responsive(s){
+        font-size: 12px;
+    }
+}
+
+
+// POPUP
+.popup-wraper{
+
+    // DISPLAY
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    // ABSOLUTE
+    position: absolute;
+
+    // WIDTH
+    width: 100vw;
+    height: 100%;
+
+    // TRANSITION
+    transition: .7s ease;
+
+    // Z INDEX
+    z-index: 1000;
+
+    background: RGB(0, 0, 0, 0.5);
+
+}
+.popup-delete-post{
+    // DISPLAY
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // TRANSITION
+    transition: .4s ease;
+
+    // WIDTH
+    width: 400px;
+
+    // PADDING
+    padding: 24px 16px;
+
+    background-color: $white-light;
+    border-radius: 16px;
+    border: 2px solid #ccc;
+
+    // RESPONSIVE
+    @include responsive(s){
+        width: 80%;
+        
+    }
+}
+.popup-delete-post legend{
+    text-align: center;
+    @include typeface-1(h4, desktop);
+    @include responsive(s){
+        @include typeface-1(h4, mobile);
+    }
+    
+}
+.popup-delete-post fieldset{
+    border: none;
+    outline: none;
+}
+.popup-delete-post fieldset div input{
+    // DISPLAY
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    
+    
+}
+.popup-delete-post input[type=submit]{
+    @include typeface-1(h4, desktop);
+    background-color: #fe0000;
+    color: $white-light;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+
+    border: none;
+
+    cursor: pointer;
+    transition: .4s ease;
+
+    @include responsive(s){
+        @include typeface-1(h4, mobile);
+
+    }
+
+    // HOVER
+    &:hover{
+        transform: scale(1.02);
+    }
+    
+}
+.popup-delete-post a{
+    @include typeface-1(h4, desktop);
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    margin: 5px;
+
+    // RESPONSIVE
+    @include responsive(s){
+        @include typeface-1(h4, mobile);
+    }
+
+    // HOVER
+    &:hover{
+        transform: scale(1.02);
+    }
+
+
+}
+.popup-delete-post legend span{
+    color: #fe0000;
+}
+
+
+
+
+
+

@@ -1,0 +1,66 @@
+{% extends 'perfil.html' %}
+
+{% block titulo %}
+Editar Perfil
+{% endblock %}
+{% block botaoeditarperfil %}{%endblock%}
+{% block numero_de_cursos %}{{numero_de_cursos }}{% endblock %}
+{% block numero_de_posts %} {{ numero_de_posts }}{% endblock %}
+
+{% block form %}
+<div class="card-profile mt-3">
+    <form method="POST" action="" class="form-login" enctype="multipart/form-data">
+        {{ form_editar_perfil.csrf_token }}
+        <legend><i class="fa-solid fa-pen-to-square mr-1"></i>Editar Perfil</legend>
+        <fieldset>
+            <div class="form-group">
+                {{ form_editar_perfil.username.label }}
+                {% if form_editar_perfil.username.errors %}
+                    {% for erro in form_editar_perfil.username.errors %}
+                        <div class="form-error">
+                            <i class="fa-solid fa-triangle-exclamation"></i> {{ erro }}
+                            {{ form_editar_perfil.username }}
+                        </div>
+                    
+                    {% endfor %}
+                {% else %}
+                    {{ form_editar_perfil.username }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form_editar_perfil.email.label }}
+                
+                {% if form_editar_perfil.email.errors %}
+                    {% for erro in form_editar_perfil.email.errors %}
+                        <div class="form-error">
+                            <i class="fa-solid fa-triangle-exclamation"></i> {{ erro }}
+                            {{ form_editar_perfil.email }}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {{ form_editar_perfil.email }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form_editar_perfil.foto_de_perfil.label }}
+                {{ form_editar_perfil.foto_de_perfil }}
+                {% if form_editar_perfil.foto_de_perfil.errors %}
+                    {% for erro in form_editar_perfil.foto_de_perfil.errors %}  
+                    <span style="color: #d60000;"><i class="fa-solid fa-triangle-exclamation"></i> {{ erro }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <p>Cursos</p>
+            {% for campo in form_editar_perfil %}
+                {% if 'curso_' in campo.name %}
+                    <div class="form-group">
+                        {{ campo.label }}
+                        {{ campo }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </fieldset>
+        {{ form_editar_perfil.submit_editar_perfil }}
+    </form>
+</div>
+{% endblock %}

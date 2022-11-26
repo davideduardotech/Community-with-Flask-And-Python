@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Connect - Uma Plataforma de Comunicação</title>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container-xl flex-column">
+        <div class="flex-center flex-column mb-4">
+            <h1 class=""><i class="fa-solid fa-comments"></i> Postagens</h1>
+            <h5></h5>
+        </div>
+        <div class="flex-center flex-wrap flex-column">
+            {% for post in posts %}
+                <div class="card-post">
+                    <div class="flex-center flex-column">
+                        <a href="{{ url_for('exibir_perfil', username=post.autor.username) }}">
+                            <div class="card-photo-profile">
+                                <img src="{{ url_for('static', filename='img/fotos_de_perfil/{}'.format(post.autor.foto_de_perfil)) }}" alt="">
+                            </div>
+                            <p class="flex-center" style="width: 100%;">Autor: {{ post.autor.username }}</p>
+                            <div class="flex-center flex-wrap">
+                                {% for curso in post.autor.cursos.split(';') %}
+                                    <div class="card-small-icon-with-curso">
+                                        <i class="fa-solid fa-chalkboard-user mr-1"></i>{{ curso }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-content">
+                        <a href="{{ url_for('exibir_post', post_id=post.id) }}">
+                            {% if current_user.is_authenticated and post.autor.email == current_user.email %}
+                                <h3 class="pseudo-element-h3 mb-1">{{ post.titulo }}</h3>
+                            {% else %}
+                                <h3 class="pseudo-element-h3 mb-1">{{ post.titulo }}</h3>
+                            {% endif %}
+                            <h4>{{ post.corpo }}</h4>
+                            <p>Data de Criação: {{ post.data_de_criacao.strftime('%d/%m/%Y %H:%M:%S') }}</p>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
